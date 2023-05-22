@@ -61,6 +61,7 @@ class OrderPage(BasePage):
         self.click(locators.OrderPageAuthLocators.ORDER_BTN2)
 
     def success_order_bar_check(self):
+        self.click(locators.OrderPageAuthLocators.SUCCESS_ORDER_CHECK)
         return self.getting_text(locators.OrderPageAuthLocators.SUCCESS_ORDER_CHECK)
 
     def confirm_order_click(self):
@@ -90,8 +91,7 @@ class OrderPage(BasePage):
     def check_scooter_page(self):
         return self.getting_text(locators.HomePageLocators.SCOOTER_HOME_HEADER)
 
-    def make_order_upper_btn_success_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
-        self.order_upper_button_click()
+    def make_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
         self.set_name(name)
         self.set_last_name(last_name)
         self.set_address(u_address)
@@ -104,39 +104,20 @@ class OrderPage(BasePage):
         self.send_comment(random_comment)
         self.order_btn2_click()
         self.confirm_order_click()
+
+    def make_order_upper_btn_success_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
+        self.order_upper_button_click()
+        self.make_order(name, last_name, u_address, u_station, u_telephone, r_date, random_comment)
         return self.success_order_bar_check()
 
     def make_order_lower_btn_success_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
         self.order_lower_button_click()
-        self.set_name(name)
-        self.set_last_name(last_name)
-        self.set_address(u_address)
-        self.set_station(u_station)
-        self.set_telephone(u_telephone)
-        self.next_button_click()
-        self.set_date(r_date)
-        self.set_rent()
-        self.set_color()
-        self.send_comment(random_comment)
-        self.order_btn2_click()
-        self.confirm_order_click()
+        self.make_order(name, last_name, u_address, u_station, u_telephone, r_date, random_comment)
         return self.success_order_bar_check()
 
     def yandex_logo_click_with_upper_btn_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
         self.order_upper_button_click()
-        self.set_name(name)
-        self.set_last_name(last_name)
-        self.set_address(u_address)
-        self.set_station(u_station)
-        self.set_telephone(u_telephone)
-        self.next_button_click()
-        self.set_date(r_date)
-        self.set_rent()
-        self.set_color()
-        self.send_comment(random_comment)
-        self.order_btn2_click()
-        self.confirm_order_click()
-        self.success_order_bar_check()
+        self.make_order(name, last_name, u_address, u_station, u_telephone, r_date, random_comment)
         self.status_btn_click()
         self.yandex_logo_click()
         self.switch_to_new_window()
@@ -144,20 +125,7 @@ class OrderPage(BasePage):
         return self.check_yandex_log_in_btn()
 
     def yandex_logo_click_with_lower_btn_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
-        self.order_lower_button_click()
-        self.set_name(name)
-        self.set_last_name(last_name)
-        self.set_address(u_address)
-        self.set_station(u_station)
-        self.set_telephone(u_telephone)
-        self.next_button_click()
-        self.set_date(r_date)
-        self.set_rent()
-        self.set_color()
-        self.send_comment(random_comment)
-        self.order_btn2_click()
-        self.confirm_order_click()
-        self.success_order_bar_check()
+        self.make_order_lower_btn_success_order(name, last_name, u_address, u_station, u_telephone, r_date, random_comment)
         self.status_btn_click()
         self.yandex_logo_click()
         self.switch_to_new_window()
@@ -165,38 +133,14 @@ class OrderPage(BasePage):
         return self.check_yandex_log_in_btn()
 
     def scooter_logo_click_with_upper_btn_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
-        self.order_upper_button_click()
-        self.set_name(name)
-        self.set_last_name(last_name)
-        self.set_address(u_address)
-        self.set_station(u_station)
-        self.set_telephone(u_telephone)
-        self.next_button_click()
-        self.set_date(r_date)
-        self.set_rent()
-        self.set_color()
-        self.send_comment(random_comment)
-        self.order_btn2_click()
-        self.confirm_order_click()
+        self.make_order_upper_btn_success_order(name, last_name, u_address, u_station, u_telephone, r_date, random_comment)
         self.status_btn_click()
         self.scooter_logo_click()
         self.wait_for_load_home_page()
         return self.check_scooter_page()
 
     def scooter_logo_click_with_lower_btn_order(self, name, last_name, u_address, u_station, u_telephone, r_date, random_comment):
-        self.order_lower_button_click()
-        self.set_name(name)
-        self.set_last_name(last_name)
-        self.set_address(u_address)
-        self.set_station(u_station)
-        self.set_telephone(u_telephone)
-        self.next_button_click()
-        self.set_date(r_date)
-        self.set_rent()
-        self.set_color()
-        self.send_comment(random_comment)
-        self.order_btn2_click()
-        self.confirm_order_click()
+        self.make_order_lower_btn_success_order(name, last_name, u_address, u_station, u_telephone, r_date, random_comment)
         self.status_btn_click()
         self.scooter_logo_click()
         self.wait_for_load_home_page()

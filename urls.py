@@ -1,0 +1,1 @@
+scooter_home_page = 'https://qa-scooter.praktikum-services.ru'
